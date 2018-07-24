@@ -44,12 +44,18 @@ module.exports = function () {
 		this.services.userService.testApi(callback);
 	}
 
+	var postBlog = function(req, res, callback){
+		console.log("The pointer is here ");
+		this.services.userService.postBlog(req, callback);
+	}
+
 	return {
 		createUser: createUser,
 		getUser: getUser,
 		updateUser: updateUser,
 		searchUser: searchUser,
 		deleteUser: deleteUser,
-		testApi:testApi
+		testApi:testApi,
+		postBlog:postBlog
 	}
 };

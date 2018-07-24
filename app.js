@@ -9,7 +9,8 @@ global.app = module.exports = express();
 app.use(bodyParser());
 app.use(errorHandler());
 
-
+const cors = require('cors');
+app.use(cors());
 global.router = express.Router();
 app.use(express.static(__dirname + '/public'));
 //global.route = require('./configurations/routes');
@@ -27,6 +28,7 @@ app.use(mongoosemask(function (result, mask, done) {
 Layers = require('./application-utilities/layers').Express;
 var wiring = require('./configurations/Routes');
 new Layers(app, router, __dirname + '/application/controller-service-layer', wiring);
+
 
 //app.use('/',router)
 

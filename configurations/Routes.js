@@ -3,7 +3,7 @@
 			views = app.views;
 
 		return {
-			"/user": [{
+			"/api/v1.0/nodejscafe/test": [{
 					method: "POST",
 					action: controllers.userController.createUser,
 					middleware: ["hello"],
@@ -49,14 +49,24 @@
 				}
 			],
 
-			"/api/test": [{
+			"/api/v1.0/nodejscafe/test": [{
 					method: "GET",
 					action: controllers.userController.testApi,
 					middleware: ["hello"],
 					views: {
 						json: views.jsonView
 					}
-				}],
+			}],
+
+			"/api/v1.0/nodejscafe/post_blog": [{
+					method: "POST",
+					action: controllers.userController.postBlog,
+					middleware: ["hello"],
+					views: {
+						json: views.jsonView
+					}
+			}]
+
 
 
 		};

@@ -75,6 +75,28 @@ UserService.prototype.testApi = function (callback) {
 			callback(false,{res:"TEST API RAN SUCCESSFULLY"})
 	})
 }
+
+UserService.prototype.postBlog = function(req, callback){
+		console.log("the req is ",req.body);
+		var blogObj={
+			title:"This is the Testing Title",
+			matter:req.body.blog
+		};
+
+		var blog = new domain.Blog(blogObj);
+		blog.save(function(err,blogObj){
+			if(!err){
+				console.log("The blog has been published successfully",blogObj);
+				callback(false,blogObj);
+			}else {
+				console.log("Some Error Occured",err);
+				callback(false,err);
+			}
+		})
+
+
+}
+
 module.exports = function (app) {
 	return new UserService(app);
 };

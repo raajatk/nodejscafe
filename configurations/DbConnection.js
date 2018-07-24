@@ -6,7 +6,7 @@
 var getDbConnection = function () {
     switch (process.env.NODE_ENV) {
     case 'development':
-      var db = mongoose.connect('mongodb://nodejs:cafed@localhost:27017/nodejscafe');
+      var db = mongoose.connect('mongodb://nodejsC:cafe@localhost:27017/nodejscafe');
       return checkMongooseConnection(db)
      case 'staging':
        var db = mongoose.connect('mongodb://admin:nodeseed@localhost:27017/mongoseed');
@@ -14,7 +14,6 @@ var getDbConnection = function () {
     case 'production':
       var db = mongoose.connect('mongodb://admin:nodeseed@localhost:27017/mongoseed');
        return checkMongooseConnection(db)
-
     case 'test':
         var db = mongoose.connect('mongodb://admin:nodeseed@localhost:27017/mongoseed');
         return checkMongooseConnection(db)
