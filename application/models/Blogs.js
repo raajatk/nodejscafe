@@ -17,6 +17,11 @@ var BlogSchema = new mongooseSchema({
   created:{
     type:Date,
     default:Date.now
+  },
+  status:{
+    type:String,
+    default:'Inactive',
+    enum:['Active','Inactive']
   }
 });
 

@@ -79,7 +79,7 @@ UserService.prototype.testApi = function (callback) {
 UserService.prototype.postBlog = function(req, callback){
 		console.log("the req is ",req.body);
 		var blogObj={
-			title:"This is the Testing Title",
+			title:req.body.title,
 			matter:req.body.blog
 		};
 
@@ -93,8 +93,38 @@ UserService.prototype.postBlog = function(req, callback){
 				callback(false,err);
 			}
 		})
+}
 
+UserService.prototype.getBlogs = function(params, callback){
+	var skip = params.skip;
+	var limit = params.limit;
+	domain.Blog.find({status:'Active'},{title:1,created:1}).skip(skip).limit(limit).sort({created:-1}).exec(function(err,res){
+		if(!err){
+			callback(false,res);
+		}else {
+			callback(false,err);
+		}
+	})
+}
 
+UserService.prototype.getBlogsCount = function(callback){
+	domain.Blog.count({status:'Active'},function(err,count){
+		if(!err){
+			callback(false,{totalNumberOfBlogs:count});
+		}else {
+			callback(false,err);
+		}
+	})
+}
+
+UserService.prototype.getBlogById = function(params, callback){
+	domain.Blog.findOne({_id:params.blogId},function(err,blogObj){
+		if(!err){
+			callback(false,blogObj);
+		}else {
+			callback(false,err);
+		}
+	})
 }
 
 module.exports = function (app) {

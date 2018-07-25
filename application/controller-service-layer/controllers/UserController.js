@@ -49,6 +49,18 @@ module.exports = function () {
 		this.services.userService.postBlog(req, callback);
 	}
 
+	var getBlogs = function(req, res, callback){
+		this.services.userService.getBlogs(req.params,callback);
+	}
+
+	var getBlogsCount = function(req, res, callback){
+		this.services.userService.getBlogsCount(callback);
+	}
+
+	var getBlogById = function(req, res, callback){
+		this.services.userService.getBlogById(req.params, callback);
+	}
+
 	return {
 		createUser: createUser,
 		getUser: getUser,
@@ -56,6 +68,9 @@ module.exports = function () {
 		searchUser: searchUser,
 		deleteUser: deleteUser,
 		testApi:testApi,
-		postBlog:postBlog
+		postBlog:postBlog,
+		getBlogs:getBlogs,
+		getBlogsCount:getBlogsCount,
+		getBlogById:getBlogById
 	}
 };
