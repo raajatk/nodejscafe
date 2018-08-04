@@ -61,6 +61,10 @@ module.exports = function () {
 		this.services.userService.getBlogById(req.params, callback);
 	}
 
+	var getLocation = function(req, res, callback){
+		this.services.userService.getLocation(req.params, callback);
+	}
+
 	return {
 		createUser: createUser,
 		getUser: getUser,
@@ -71,6 +75,7 @@ module.exports = function () {
 		postBlog:postBlog,
 		getBlogs:getBlogs,
 		getBlogsCount:getBlogsCount,
-		getBlogById:getBlogById
+		getBlogById:getBlogById,
+		getLocation:getLocation
 	}
 };

@@ -46,6 +46,15 @@
 					views: {
 						json: views.jsonView
 					}
+			}],
+
+			"/api/v1.0/get_location/:location": [{
+					method: "GET",
+					action: controllers.userController.getLocation,
+					middleware: ["hello"],
+					views: {
+						json: views.jsonView
+					}
 			}]
 
 

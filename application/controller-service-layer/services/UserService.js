@@ -127,6 +127,11 @@ UserService.prototype.getBlogById = function(params, callback){
 	})
 }
 
+UserService.prototype.getLocation = function(params, callback){
+	console.log(" the location sent is ",params.location);
+	callback(false,{});
+}
+
 module.exports = function (app) {
 	return new UserService(app);
 };
